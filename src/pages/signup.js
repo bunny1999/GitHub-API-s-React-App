@@ -1,12 +1,12 @@
 import React, { useEffect,useContext } from 'react'
-import Base from './base'
+import Base from '../components/base'
 import { UserContext } from '../context/context'
 import { SIGNUP } from '../context/actions.types'
 import { Redirect} from 'react-router-dom'
 
 const Signup=()=>{
     
-    const {state,dispatch} = useContext(UserContext)
+    const {stateUser,dispatchUser} = useContext(UserContext)
 
     const redirect=()=>{
         return <Redirect to="/"/> 
@@ -14,9 +14,9 @@ const Signup=()=>{
 
     useEffect(() => {
         redirect();
-        if(state!==null){
+        if(stateUser!==null){
         }
-        dispatch({
+        dispatchUser({
           type:SIGNUP,
           payload:{
               email:"abc@gmail.com",

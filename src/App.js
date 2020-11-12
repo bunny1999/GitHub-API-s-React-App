@@ -2,10 +2,11 @@ import React,{useContext,useEffect} from 'react'
 import Base from './components/base';
 import { UserContext } from './context/context';
 import { Redirect } from 'react-router-dom';
+import Search from './components/search';
 
 function App(props) {
   
-  const {state} = useContext(UserContext)
+  const {stateUser} = useContext(UserContext)
 
   useEffect(() => {
     // if(state!==null){
@@ -15,7 +16,7 @@ function App(props) {
   
   return (
     <Base>
-      <h3>Home</h3>
+      <Search/>
     </Base>
   );
 }

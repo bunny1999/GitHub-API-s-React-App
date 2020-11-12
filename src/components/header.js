@@ -1,15 +1,15 @@
 import React,{useContext} from 'react'
 import {Link} from 'react-router-dom'
-import { Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem,Nav} from 'reactstrap'
+import { Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem,Nav, NavbarText} from 'reactstrap'
 import { UserContext } from '../context/context'
 import { LOGOUT } from '../context/actions.types'
 
 export default function Header() {
     
-    const {state,dispatch} = useContext(UserContext)
+    const {stateUser,dispatchUser} = useContext(UserContext)
 
     const logout=()=>{
-        dispatch({
+        dispatchUser({
             type:LOGOUT
         })
     }
@@ -20,10 +20,21 @@ export default function Header() {
                 <NavbarToggler/>
                 <Link to="/" className="text-white">GitApi App</Link>
             </NavbarBrand>
+            {
+                // TODO: 
+            }
             <Collapse navbar>
+                <Nav navbar>
+                    <NavItem>
+                        <Link to="/user/profile" className="text-white mr-2 bold">Profile</Link>
+                    </NavItem>
+                    <NavItem>
+                        <Link to="/user/projects" className="text-white">Projects</Link>
+                    </NavItem>
+                </Nav>
                 <Nav className="ml-auto" navbar>
                     <Nav className="mr-2">
-                        {state===null?
+                        {stateUser===null?
                             (<Nav>
                                 <NavItem >
                                     <Link to="/signup" className="text-white mr-2">Signup</Link>
@@ -33,7 +44,7 @@ export default function Header() {
                                 </NavItem>
                             </Nav>
                         ):("")}
-                        {state!==null?(
+                        {stateUser!==null?(
                             <NavItem>
                                 <Link to="/signin" onClick={logout} className="text-white">Logout</Link>
                             </NavItem>

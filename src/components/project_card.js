@@ -2,6 +2,7 @@ import React from 'react'
 import GitLogo from '../gitHubLogo.png';
 import { Card, CardBody,Row,Col, Badge } from 'reactstrap'
 import {FaLink} from 'react-icons/fa'
+import Skills from './skills';
 
 export default function ProjectCard({title,description,tags=[],link,url}) {
     return (
@@ -24,13 +25,7 @@ export default function ProjectCard({title,description,tags=[],link,url}) {
                     </Col>
                 </Row>
                 <hr style={{border:"0.5px solid #bbb"}}/>
-                <Row className="m-1">
-                    {
-                        tags.map(tag=>(
-                            <Badge  color="info" className="mr-2 mb-2 badge-pill">{tag}</Badge>
-                        ))
-                    }
-                </Row>
+                <Skills skilsList={tags} className="m-1" />
             </CardBody>
         </Card>
     )
