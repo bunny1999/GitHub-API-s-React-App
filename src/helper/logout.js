@@ -1,7 +1,8 @@
-import Firebase from "../context/firebase"
+import {auth} from "../context/firebase"
 
 const logout = ()=>{
-    Firebase.auth().signOut();
+    auth.signOut();
+    localStorage.removeItem("auth");
     return null;
 }
 

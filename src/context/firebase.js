@@ -1,4 +1,6 @@
-import Fb from 'firebase';
+import firebase from 'firebase/app'
+import "firebase/auth";
+import "firebase/firestore";
 
 var firebaseConfig = {
     apiKey: "AIzaSyDm7lmpItewpAIIih0FDQb3wp0CKJSnp4w",
@@ -10,6 +12,7 @@ var firebaseConfig = {
     appId: "1:119879391595:web:e8c2722d6246c6685f942e",
     measurementId: "G-F1M9LXCZCM"
 };
-const Firebase=Fb.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 
-export default Firebase;
+export const auth = firebase.auth();
+export const firestore = firebase.firestore();

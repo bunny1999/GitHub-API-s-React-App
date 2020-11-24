@@ -11,5 +11,4 @@ export const apisUser= async ({username})=>{
             repos:userRepoResponce.data
         }
     }
-    return "Error";
 }

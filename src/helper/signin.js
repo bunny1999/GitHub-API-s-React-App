@@ -1,4 +1,4 @@
-import Firebase from "../context/firebase"
+import {auth} from "../context/firebase"
 import { toast } from "react-toastify";
 import { User } from "../context/user";
 
@@ -11,13 +11,15 @@ const signin = ({email,password})=>{
         toast("Enter Password",{type:"error"});
         return;
     }
-    Firebase.auth().signInWithEmailAndPassword(email,password)
+    auth.signInWithEmailAndPassword(email,password)
     .then((userRef)=>{
-        return User({
+        const user = User({
             name:userRef.user.displayName,
             email:userRef.user.emailVerified,
             uid:userRef.user.uid
         })
+        localStorage.setItem("auth",user);
+        return user;
     }).catch((err)=>{
         toast(err,{type:"error"})
     })

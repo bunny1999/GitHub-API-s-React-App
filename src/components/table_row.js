@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TableRow = ({heading,value})=>{
+export const TableRow = ({heading,value})=>{
     return value!==null
     ?(
         <tr>
@@ -10,4 +10,11 @@ const TableRow = ({heading,value})=>{
     ):("")
 }
 
-export default TableRow;
+export const TableRowLink=({heading,link,icon})=>{
+    return link!==null
+    ?(
+        <TableRow heading={heading} value={
+            <a href={link} className="text-info">{link} <span>{icon}</span></a>
+        }/>
+    ):("")
+}
